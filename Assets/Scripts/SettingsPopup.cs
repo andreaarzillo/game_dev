@@ -9,14 +9,14 @@ public class SettingsPopup : MonoBehaviour
     
     public void Open()
     {
-        gameObject.SetActive(true); //object on top of the window
+        gameObject.SetActive(true); //object on top of the window ??
         PauseControl.Instance.PauseGame(true);
         GameManager.Instance.InputInteraction = false;
     }
 
     public void Close()
     {
-        gameObject.SetActive(false); //turn it off
+        gameObject.SetActive(false); //turn it off ??
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
     }

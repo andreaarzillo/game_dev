@@ -14,7 +14,9 @@ public class GameOver : MonoBehaviour
     }
 
     private void DisplayGameOver(){
-        Debug.Log("OK");
+        //Debug.Log("OK");
+        PauseControl.Instance.PauseGame(false);
+        GameManager.Instance.InputInteraction = true;
         GameOverCanvas.SetActive(true);
 
     }

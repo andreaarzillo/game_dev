@@ -12,7 +12,7 @@ public class TimerTime : MonoBehaviour
     private int _timeM;
     private string _timeS; 
     private float _timeReal;
-     private bool _running;
+    public bool _decrase;
 
     //public static TimerTime Instance = null;
 
@@ -22,9 +22,19 @@ public class TimerTime : MonoBehaviour
         _timeH = 48;
         _timeM = 0;
         _timeReal = 0;
+        _decrase = false;
         _timeS = _timeH.ToString("D2")+":"+_timeM.ToString("D2")+"H";
         //Instance = this;
+
         
+
+    }
+
+    void resetValues(){
+        _timeH = 48;
+        _timeM = 0;
+        _timeReal = 0;
+        _decrase = true;
 
     }
 
@@ -32,14 +42,24 @@ public class TimerTime : MonoBehaviour
     void Start()
     {
         timerText.text = _timeS;
-        _running = true;
+        Messenger.AddListener(GameEvent.GAME_OVER, StopDecrase);
+        Messenger.AddListener(GameEvent.RESET_GAME, resetValues);
+        Messenger.AddListener(GameEvent.START_GAME, resetValues);
    
     }
 
+
+
+    void StopDecrase(){
+        _decrase = false;
+
+    }
+
     public void Update(){
-        //variabile tempo reale aumento con il delta time
+        if(_decrase){
+            //variabile tempo reale aumento con il delta time
             _timeReal+= Time.deltaTime;
-            if(_timeReal>=1 && _running){
+            if(_timeReal>=1){
                 if (_timeM == 0){
                 _timeH = _timeH-1;
                 _timeM = 59;
@@ -47,8 +67,7 @@ public class TimerTime : MonoBehaviour
                     _timeM = _timeM-1;
                 }
                 if(_timeM <= 0 && _timeH <= 0){
-                    _running = false;
-                 
+                    _decrase = false;
                     Messenger.Broadcast(GameEvent.GAME_OVER, MessengerMode.DONT_REQUIRE_LISTENER);
                     //PauseControl.Instance.PauseGame(true);
                 }
@@ -56,7 +75,8 @@ public class TimerTime : MonoBehaviour
                 timerText.text = _timeS;
                 _timeReal = 0;
             }
-            
+
+        }    
         
     }
 

@@ -12,13 +12,23 @@ public class Energy : MonoBehaviour
     private float _timeReal;
     public bool _energyDecrase;
     private float _totalTime;
+    public bool _decrase;
+
     // Start is called before the first frame update
 
     void Awake()
     {
+         _energy = 0.0f;
+        _timeReal = 0;
+        _decrase = false;
+
+    }
+
+
+     void resetValues(){
         _energy = 1.0f;
         _timeReal = 0;
-        _energyDecrase = false;
+        _decrase = true;
 
     }
 
@@ -26,26 +36,37 @@ public class Energy : MonoBehaviour
     {
 
         energyValue.value = _energy;
-        _energyDecrase = true;
+        Messenger.AddListener(GameEvent.GAME_OVER, StopDecrase);
+        Messenger.AddListener(GameEvent.RESET_GAME, resetValues);
+        Messenger.AddListener(GameEvent.START_GAME, resetValues);
+
 
 
         
     }
 
+
+    void StopDecrase(){
+        _decrase = false;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        _totalTime+=Time.deltaTime;
-        _timeReal+= Time.deltaTime;
-        if(_timeReal>=0.03f && _energyDecrase){ 
-            //energyValue.value = _energy;
-             _energy -= (_timeReal/100f);
-             if(_energy<=0){
-                _energy = 0;
-                _energyDecrase = false;
-             }
-              energyValue.value = _energy;
-             _timeReal = 0;
+        if(_decrase){
+            _totalTime+=Time.deltaTime;
+            _timeReal+= Time.deltaTime;
+            if(_timeReal>=0.03f){ 
+                //energyValue.value = _energy;
+                _energy -= (_timeReal/100f);
+                if(_energy<=0){
+                    _energy = 0;
+                    _energyDecrase = false;
+                }
+                energyValue.value = _energy;
+                _timeReal = 0;
+            }
         }
         
     }
