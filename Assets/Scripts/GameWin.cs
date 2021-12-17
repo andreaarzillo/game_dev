@@ -6,6 +6,8 @@ public class GameWin : MonoBehaviour
 {
     [SerializeField]
     private GameObject CanvasWin;
+    [SerializeField]
+    private GameObject GameUI;
     void Start()
     {
         
@@ -16,6 +18,7 @@ public class GameWin : MonoBehaviour
 
     private void DisplayGameWin(){
         //Debug.Log("OK");
+        GameUI.SetActive(false);
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
         CanvasWin.SetActive(true);

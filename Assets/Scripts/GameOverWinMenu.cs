@@ -15,7 +15,7 @@ public class GameOverWinMenu : MonoBehaviour
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
         Messenger.Broadcast(GameEvent.START_PAGE, MessengerMode.DONT_REQUIRE_LISTENER);
-        UserUI.SetActive(false);
+        //UserUI.SetActive(false);
         StartPage.SetActive(true);
 
         //TODO scermata menu principale
@@ -26,14 +26,10 @@ public class GameOverWinMenu : MonoBehaviour
     public void Replay(){
         
         gameObject.SetActive(false);
+        UserUI.SetActive(true);
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
         Messenger.Broadcast(GameEvent.RESET_GAME, MessengerMode.DONT_REQUIRE_LISTENER);
-        
-
-
-
-
     }
     // Start is called before the first frame update
     void Start()
