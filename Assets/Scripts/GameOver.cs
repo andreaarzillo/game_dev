@@ -6,6 +6,8 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField]
     private GameObject GameOverCanvas;
+    [SerializeField]
+    private GameObject GameUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +17,7 @@ public class GameOver : MonoBehaviour
 
     private void DisplayGameOver(){
         //Debug.Log("OK");
+        GameUI.SetActive(false);
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
         GameOverCanvas.SetActive(true);

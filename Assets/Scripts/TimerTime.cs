@@ -8,6 +8,7 @@ public class TimerTime : MonoBehaviour
 {
     [SerializeField]
     private Text timerText;
+
     private int _timeH;
     private int _timeM;
     private string _timeS; 
@@ -23,7 +24,6 @@ public class TimerTime : MonoBehaviour
         _timeM = 0;
         _timeReal = 0;
         _decrase = false;
-        _timeS = _timeH.ToString("D2")+":"+_timeM.ToString("D2")+"H";
         //Instance = this;
 
         
@@ -35,7 +35,9 @@ public class TimerTime : MonoBehaviour
         _timeM = 0;
         _timeReal = 0;
         _decrase = true;
-
+        _timeS = _timeH.ToString("D2")+":"+_timeM.ToString("D2")+"H";
+        timerText.text = _timeS;
+    
     }
 
     // Start is called before the first frame update
@@ -50,7 +52,7 @@ public class TimerTime : MonoBehaviour
 
 
 
-    void StopDecrase(){
+    public void StopDecrase(){
         _decrase = false;
 
     }
@@ -60,6 +62,7 @@ public class TimerTime : MonoBehaviour
             //variabile tempo reale aumento con il delta time
             _timeReal+= Time.deltaTime;
             if(_timeReal>=1){
+                
                 if (_timeM == 0){
                 _timeH = _timeH-1;
                 _timeM = 59;
@@ -71,6 +74,7 @@ public class TimerTime : MonoBehaviour
                     Messenger.Broadcast(GameEvent.GAME_OVER, MessengerMode.DONT_REQUIRE_LISTENER);
                     //PauseControl.Instance.PauseGame(true);
                 }
+
                 _timeS = _timeH.ToString("D2")+":"+_timeM.ToString("D2")+"H";
                 timerText.text = _timeS;
                 _timeReal = 0;
