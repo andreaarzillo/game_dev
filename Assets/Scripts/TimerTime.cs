@@ -20,8 +20,8 @@ public class TimerTime : MonoBehaviour
 
     void Awake()
     {
-        _timeH = 0;
-        _timeM = 10;
+        _timeH = 48;
+        _timeM = 0;
         _timeReal = 0;
         _decrase = false;
         //Instance = this;
@@ -31,8 +31,8 @@ public class TimerTime : MonoBehaviour
     }
 
     void resetValues(){
-        _timeH = 0;
-        _timeM = 10;
+        _timeH = 48;
+        _timeM = 0;
         _timeReal = 0;
         _decrase = true;
         _timeS = _timeH.ToString("D2")+":"+_timeM.ToString("D2")+"H";
