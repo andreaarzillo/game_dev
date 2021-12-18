@@ -16,12 +16,15 @@ public class StartPage : MonoBehaviour
    private GameObject InfoPanel;
    [SerializeField]
    private InputField Username;
+    [SerializeField]
+   private GameObject Mondo;
 
     public void StartGame(){
         gameObject.SetActive(false);
         GameUI.SetActive(true);
         setUsername();
         Messenger.Broadcast(GameEvent.START_GAME, MessengerMode.DONT_REQUIRE_LISTENER);
+        Mondo.SetActive(true);
     }
 
 
