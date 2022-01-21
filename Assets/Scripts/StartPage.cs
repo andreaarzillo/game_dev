@@ -8,23 +8,18 @@ using UnityEngine.UIElements;
 public class StartPage : MonoBehaviour
 {
 
-   [SerializeField]
-   private GameObject GameUI;
+   
    [SerializeField]
    private GameObject StartPanel;
    [SerializeField]
    private GameObject InfoPanel;
    [SerializeField]
    private InputField Username;
-    [SerializeField]
-   private GameObject Mondo;
 
     public void StartGame(){
         gameObject.SetActive(false);
-        GameUI.SetActive(true);
         setUsername();
-        Messenger.Broadcast(GameEvent.START_GAME, MessengerMode.DONT_REQUIRE_LISTENER);
-        Mondo.SetActive(true);
+        Messenger.Broadcast(GameEvent.START_TUTORIAL, MessengerMode.DONT_REQUIRE_LISTENER);
     }
 
 

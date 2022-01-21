@@ -8,6 +8,8 @@ public class GameOverWinMenu : MonoBehaviour
     private GameObject StartPage;
      [SerializeField]
     private GameObject UserUI;
+    [SerializeField]
+    private GameObject world;
 
      public void Exit()
     {
@@ -15,7 +17,8 @@ public class GameOverWinMenu : MonoBehaviour
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
         Messenger.Broadcast(GameEvent.START_PAGE, MessengerMode.DONT_REQUIRE_LISTENER);
-        //UserUI.SetActive(false);
+        UserUI.SetActive(false);
+        world.SetActive(false);
         StartPage.SetActive(true);
 
         //TODO scermata menu principale
