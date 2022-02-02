@@ -8,6 +8,8 @@ public class GameWin : MonoBehaviour
     private GameObject CanvasWin;
     [SerializeField]
     private GameObject GameUI;
+      [SerializeField]
+    private GameObject cameraUI;
     void Start()
     {
         
@@ -18,6 +20,7 @@ public class GameWin : MonoBehaviour
 
     private void DisplayGameWin(){
         //Debug.Log("OK");
+        cameraUI.SetActive(true);
         GameUI.SetActive(false);
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;

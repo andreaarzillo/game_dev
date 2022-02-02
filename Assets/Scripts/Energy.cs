@@ -26,11 +26,13 @@ public class Energy : MonoBehaviour
 
 
      void resetValues(){
-        _energy = 1.0f;
-        _timeReal = 0;
-        _decrase = true;
-
+        _energy = 0.25f;
+        _timeReal = 0; 
+        _decrase = false;       
+        energyValue.value = _energy;
     }
+
+    
 
     void Start()
     {
@@ -39,16 +41,18 @@ public class Energy : MonoBehaviour
         Messenger.AddListener(GameEvent.GAME_OVER, StopDecrase);
         Messenger.AddListener(GameEvent.RESET_GAME, resetValues);
         Messenger.AddListener(GameEvent.START_GAME, resetValues);
-
-
+        Messenger.AddListener(GameEvent.START_STOP_DECRASE, StartStopDecrase);
 
         
+    }
+
+    void StartStopDecrase(){
+        _decrase =  (!_decrase);
     }
 
 
     void StopDecrase(){
         _decrase = false;
-
     }
 
     // Update is called once per frame
@@ -63,6 +67,7 @@ public class Energy : MonoBehaviour
                 if(_energy<=0){
                     _energy = 0;
                     _energyDecrase = false;
+                    Messenger.Broadcast(GameEvent.NO_MORE_ENERGY, MessengerMode.DONT_REQUIRE_LISTENER);
                 }
                 energyValue.value = _energy;
                 _timeReal = 0;

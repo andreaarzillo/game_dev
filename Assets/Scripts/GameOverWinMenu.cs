@@ -10,9 +10,12 @@ public class GameOverWinMenu : MonoBehaviour
     private GameObject UserUI;
     [SerializeField]
     private GameObject world;
+    [SerializeField]
+    private GameObject cameraUI;
 
      public void Exit()
     {
+        cameraUI.SetActive(true);
         gameObject.SetActive(false);
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
@@ -30,6 +33,7 @@ public class GameOverWinMenu : MonoBehaviour
         
         gameObject.SetActive(false);
         UserUI.SetActive(true);
+         cameraUI.SetActive(false);
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
         Messenger.Broadcast(GameEvent.RESET_GAME, MessengerMode.DONT_REQUIRE_LISTENER);

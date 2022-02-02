@@ -23,6 +23,8 @@ public class TutorialControl : MonoBehaviour
    private GameObject Mondo;
     [SerializeField]
    private GameObject Tutorial;
+   public GameObject CameraUI;
+   public GameObject Camera1;
     // Start is called before the first frame update
     int nrNext;
     bool started = false;
@@ -51,6 +53,8 @@ public class TutorialControl : MonoBehaviour
                 Tutorial.SetActive(false);
                 GameUI.SetActive(true);
                 Mondo.SetActive(true);
+                Camera1.SetActive(true);
+                CameraUI.SetActive(false);
                 Messenger.Broadcast(GameEvent.START_GAME, MessengerMode.DONT_REQUIRE_LISTENER);
 
         }
@@ -88,6 +92,8 @@ public class TutorialControl : MonoBehaviour
                 GameUI.SetActive(true);
                 Mondo.SetActive(true);
                 nrNext++;
+                Camera1.SetActive(true);
+                CameraUI.SetActive(false);
                 Messenger.Broadcast(GameEvent.START_GAME, MessengerMode.DONT_REQUIRE_LISTENER);
             break;
             default:
@@ -100,6 +106,8 @@ public class TutorialControl : MonoBehaviour
                 Tutorial.SetActive(false);
                 GameUI.SetActive(true);
                 Mondo.SetActive(true);
+                CameraUI.SetActive(false);
+                Camera1.SetActive(true);
                 Messenger.Broadcast(GameEvent.START_GAME, MessengerMode.DONT_REQUIRE_LISTENER);
 
             break;

@@ -6,4 +6,6 @@ public class GameEvent
      public const string START_GAME = "StartGame";
      public const string START_PAGE = "StartPage";
      public const string START_TUTORIAL = "StartTutorial";
+     public const string START_STOP_DECRASE = "START_STOP_DECRASE";
+     public const string NO_MORE_ENERGY = "NoEnergy";
 }
