@@ -21,7 +21,6 @@ public class Energy : MonoBehaviour
          _energy = 0.0f;
         _timeReal = 0;
         _decrase = false;
-
     }
 
 
@@ -36,13 +35,11 @@ public class Energy : MonoBehaviour
 
     void Start()
     {
-
         energyValue.value = _energy;
         Messenger.AddListener(GameEvent.GAME_OVER, StopDecrase);
         Messenger.AddListener(GameEvent.RESET_GAME, resetValues);
         Messenger.AddListener(GameEvent.START_GAME, resetValues);
         Messenger.AddListener(GameEvent.START_STOP_DECRASE, StartStopDecrase);
-
         
     }
 
@@ -73,6 +70,5 @@ public class Energy : MonoBehaviour
                 _timeReal = 0;
             }
         }
-        
     }
 }

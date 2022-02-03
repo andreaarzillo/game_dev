@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 
 public class SettingsPopup : MonoBehaviour
 {
-    
-    
     public void Open()
     {
         gameObject.SetActive(true); //object on top of the window ??
@@ -16,7 +14,7 @@ public class SettingsPopup : MonoBehaviour
     }
 
     public void Close()
-    {   
+    {
         gameObject.SetActive(false); //turn it off ??
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
@@ -27,6 +25,4 @@ public class SettingsPopup : MonoBehaviour
         //OnSubmitName(playerName.text);
         Close();
     }
-
-
 }

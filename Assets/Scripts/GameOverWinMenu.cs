@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class GameOverWinMenu : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject StartPage;
-     [SerializeField]
-    private GameObject UserUI;
-    [SerializeField]
-    private GameObject world;
-    [SerializeField]
-    private GameObject cameraUI;
+    [SerializeField] private GameObject StartPage;
+    [SerializeField] private GameObject UserUI;
+    [SerializeField] private GameObject world;
+    [SerializeField] private GameObject cameraUI;
 
-     public void Exit()
+    public void Exit()
     {
         cameraUI.SetActive(true);
         gameObject.SetActive(false);
@@ -25,28 +21,26 @@ public class GameOverWinMenu : MonoBehaviour
         StartPage.SetActive(true);
 
         //TODO scermata menu principale
-
     }
 
 
-    public void Replay(){
-        
+    public void Replay()
+    {
         gameObject.SetActive(false);
         UserUI.SetActive(true);
-         cameraUI.SetActive(false);
+        cameraUI.SetActive(false);
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
         Messenger.Broadcast(GameEvent.RESET_GAME, MessengerMode.DONT_REQUIRE_LISTENER);
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
