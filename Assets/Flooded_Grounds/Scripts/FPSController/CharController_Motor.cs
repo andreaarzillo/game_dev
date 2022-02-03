@@ -147,9 +147,6 @@ public class CharController_Motor : MonoBehaviour {
 
 			changeFilterLevel();
 			Messenger.Broadcast(GameEvent.START_STOP_DECRASE, MessengerMode.DONT_REQUIRE_LISTENER);
-			if(enumero==2){
-				Messenger.Broadcast(GameEvent.GAME_WIN, MessengerMode.DONT_REQUIRE_LISTENER);
-			}
 		}
 		
 	
