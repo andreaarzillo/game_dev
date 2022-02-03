@@ -31,12 +31,16 @@ public class GameOverWinMenu : MonoBehaviour
 
     public void Replay(){
         
+        cameraUI.SetActive(false);
         gameObject.SetActive(false);
-        UserUI.SetActive(true);
-         cameraUI.SetActive(false);
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
         Messenger.Broadcast(GameEvent.RESET_GAME, MessengerMode.DONT_REQUIRE_LISTENER);
+        UserUI.SetActive(false);
+        world.SetActive(false);
+         UserUI.SetActive(true);
+           world.SetActive(true);
+
     }
     // Start is called before the first frame update
     void Start()
