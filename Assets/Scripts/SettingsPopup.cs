@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class SettingsPopup : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject gameFilter;
     
     
     public void Open()
@@ -13,6 +15,7 @@ public class SettingsPopup : MonoBehaviour
         gameObject.SetActive(true); //object on top of the window ??
         PauseControl.Instance.PauseGame(true);
         GameManager.Instance.InputInteraction = false;
+        gameFilter.SetActive(false);
     }
 
     public void Close()
@@ -20,6 +23,9 @@ public class SettingsPopup : MonoBehaviour
         gameObject.SetActive(false); //turn it off ??
         PauseControl.Instance.PauseGame(false);
         GameManager.Instance.InputInteraction = true;
+        gameFilter.SetActive(true);
+
+
     }
 
     public void Submit()

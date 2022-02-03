@@ -21,6 +21,9 @@ public class CharController_Motor : MonoBehaviour {
 	public bool webGLRightClickRotation = true;
 	float gravity = -9.8f;
 	private GameObject selectedCam;
+	private Vector3 originalPos;
+
+	private int enumero = 0;
 
 
 	void Start(){
@@ -36,6 +39,7 @@ public class CharController_Motor : MonoBehaviour {
 			webGLRightClickRotation = false;
 			sensitivity = sensitivity * 1.5f;
 		}
+		originalPos = new Vector3(character.transform.position.x, character.transform.position.y, character.transform.position.z);
 	}
 
 	void changeCamera(){
@@ -52,14 +56,37 @@ public class CharController_Motor : MonoBehaviour {
 		}
 	}
 
+	void resetColor(){
+		Image image = Wfilter.GetComponent<Image>();
+		Color color = image.color;			
+		color.a =0.392f;
+		image.color = color;
+	}
+
+	void resetPosition(){
+		character.transform.position = originalPos;
+		character.transform.localEulerAngles = new Vector3(0,0,0);
+		cam.transform.localEulerAngles = new Vector3(0,0,0);
+		cam2.transform.localEulerAngles = new Vector3(16.98f,0,0);
+		cam3.transform.localEulerAngles = new Vector3(16.98f,180f,0);
+	}
+
 	void resetCam(){
 		selectedCam.SetActive(false);
 		selectedCam = cam;
 		selectedCam.SetActive(false);
+		resetColor();
+		resetPosition();
 	}
 	void restartCam(){
+		Debug.Log(gameObject);
+       // gameObject.SetActive(false);
+        //PauseControl.Instance.PauseGame(false);
+        //GameManager.Instance.InputInteraction = true;
 		resetCam();
 		selectedCam.SetActive(true);
+        //gameObject.SetActive(true);
+       // PauseControl.Instance.PauseGame(true);
 	}
 
 
@@ -114,6 +141,7 @@ public class CharController_Motor : MonoBehaviour {
 		}
 		if (Input.GetKeyDown(KeyCode.E) && energyValue.value > 0.0f)
 		{
+			enumero++;
 
 
 

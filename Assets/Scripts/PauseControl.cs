@@ -6,6 +6,8 @@ public class PauseControl : MonoBehaviour
 {
     private bool _gamePaused;
     public static PauseControl Instance = null;
+    [SerializeField]
+    private GameObject fpsCounter;
 
     void Awake()
     {
@@ -29,10 +31,12 @@ public class PauseControl : MonoBehaviour
         if (pause)
         {
             Time.timeScale = 0f;
+            fpsCounter.SetActive(false);
         }
         else
         {
             Time.timeScale = 1;
+            fpsCounter.SetActive(true);
         }
 
         _gamePaused = pause;
