@@ -10,19 +10,15 @@ public class GameManager
         InputInteraction = false;
     }
 
-     private string _playerName;
+    private string _playerName;
 
     public string PlayerName
     {
         get => _playerName;
-        set
-        {
-            _playerName = value;
-        }
+        set { _playerName = value; }
     }
 
     public bool InputInteraction { get; set; }
 
     public static GameManager Instance { get; } = new GameManager();
-
 }

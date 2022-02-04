@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ReplayScript : MonoBehaviour
 {
-
     public void Close()
     {
         gameObject.SetActive(false); //turn it off ??
@@ -15,12 +14,10 @@ public class ReplayScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

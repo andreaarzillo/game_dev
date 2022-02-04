@@ -8,4 +8,5 @@ public class GameEvent
      public const string START_TUTORIAL = "StartTutorial";
      public const string START_STOP_DECRASE = "START_STOP_DECRASE";
      public const string NO_MORE_ENERGY = "NoEnergy";
+     public const string ENEMIES_DEPLOYED = "ENEMIES_DEPLOYED";
 }
