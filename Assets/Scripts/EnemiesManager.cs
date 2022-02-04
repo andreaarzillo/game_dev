@@ -1,4 +1,5 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -139,17 +140,20 @@ public class EnemiesManager : MonoBehaviour
 
     private void GenerateBody()
     {
-        if (body == null && body != null) Instantiate(body);
+        if (_body == null && body != null) Instantiate(body);
     }
 
     private void Start()
     {
         DeployBody();
         DeployEnemies();
+        Messenger.Broadcast(GameEvent.ENEMIES_DEPLOYED);
     }
 
     private void DeployBody()
     {
+        if (_body == null) return;
+
         switch (Random.Range(1, (int) (locationsNumber + 1)))
         {
             case 1:
@@ -193,6 +197,8 @@ public class EnemiesManager : MonoBehaviour
 
                 break;
         }
+
+        _body.transform.Rotate(90, 0, 0);
     }
 
     private void DeployEnemies()
@@ -270,13 +276,5 @@ public class EnemiesManager : MonoBehaviour
                     break;
             }
         }
-    }
-
-    private void Update()
-    {
-    }
-
-    private void FixedUpdate()
-    {
     }
 }
