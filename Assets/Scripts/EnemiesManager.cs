@@ -75,7 +75,9 @@ public class EnemiesManager : MonoBehaviour
                     if (enemyPrefab02 != null)
                         for (int i = 0; i < toCreate; i++)
                         {
-                            _enemies.Add(Instantiate(enemyPrefab02));
+                            GameObject g = Instantiate(enemyPrefab02);
+                            g.transform.Rotate(90,180,0);
+                            _enemies.Add(g);
                             totEnemies--;
                         }
 
